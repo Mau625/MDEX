@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moz Diaristas Express</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #004d40;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        header h1 span {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 80px 20px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #004d40;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #004d40;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #00332e;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            background-color: #e8f5e9;
+            color: #004d40;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .message a {
+            color: #004d40;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .message a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><span id="logo">Moz Diaristas</span> Express</h1>
+        <nav>
+            <a href="#" id="homeLink">Página Inicial</a>
+            <a href="#" id="termosLink">Termos e Condições</a>
+            <a href="#" id="registroLink">Se Cadastrar</a>
+            <a href="#" id="sobreLink">Sobre</a>
+            <a href="#" id="contatoLink">Contato</a>
+        </nav>
+    </header>
+    <main id="mainContent">
+        <!-- O conteúdo será inserido aqui dinamicamente -->
+    </main>
+    <script>
+        const content = {
+            inicial: `
+                <h2>Bem-vindo ao Moz Diaristas Express</h2>
+                <p>Conectamos diaristas qualificados com clientes que precisam de serviços domésticos como limpeza, lavagem de roupas e cuidados com o quintal.</p>
+            `,
+            termos: `
+                <h2>Termos e Condições</h2>
+                <p>Aqui você pode inserir os termos e condições do seu serviço. Inclua informações sobre política de privacidade, uso dos dados, e outras informações legais relevantes.</p>
+                <button onclick="loadContent('inicial')">Voltar</button>
+            `,
+            registro: `
+                <h2>Registro</h2>
+                <form id="registroForm">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="celular">Celular:</label>
+                    <input type="tel" id="celular" name="celular" required>
+
+                    <label for="tipo">Tipo de Usuário:</label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="diarista">Diarista</option>
+                    </select>
+
+                    <label for="provincia">Província:</label>
+                    <select id="provincia" name="provincia" required>
+                        <option value="">Selecione a Província</option>
+                        <option value="maputo">Maputo</option>
+                        <option value="sofala">Sofala</option>
+                        <option value="nampula">Nampula</option>
+                        <option value="zambezia">Zambézia</option>
+                        <option value="tete">Tete</option>
+                        <option value="niassa">Niassa</option>
+                        <option value="inhambane">Inhambane</option>
+                        <option value="gaza">Gaza</option>
+                        <option value="manica">Manica</option>
+                        <option value="maputo-provincia">Maputo Província</option>
+                    </select>
+
+                    <label for="distrito">Distrito:</label>
+                    <select id="distrito" name="distrito" required>
+                        <option value="">Selecione o Distrito</option>
+                        <!-- Distritos serão carregados dinamicamente -->
+                    </select>
+
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" required>
+
+                    <div id="servicos" class="hidden">
+                        <label>Serviços que o diarista irá prestar:</label>
+                        <input type="checkbox" id="lavar-roupa" name="servicos" value="lavar-roupa">
+                        <label for="lavar-roupa">Lavar Roupa</label><br>
+
+                        <input type="checkbox" id="cozinhar" name="servicos" value="cozinhar">
+                        <label for="cozinhar">Cozinhar</label><br>
+
+                        <input type="checkbox" id="cuidar-casa" name="servicos" value="cuidar-casa">
+                        <label for="cuidar-casa">Cuidar da Casa</label><br>
+
+                        <input type="checkbox" id="limpar" name="servicos" value="limpar">
+                        <label for="limpar">Limpar</label>
+                    </div>
+
+                    <button type="submit">Registrar</button>
+                </form>
+                <div id="successMessage" class="hidden message">
+                    <h3>Parabéns!</h3>
+                    <p>Seu registro foi realizado com sucesso.</p>
+                    <p>Para obter informações sobre taxas e valores dos serviços, entre em contato conosco via WhatsApp:</p>
+                    <p><a href="https://wa.me/258000000000" target="_blank">+258 000 000 000</a></p>
+                </div>
+            `,
+            sobre: `
+                <h2>Sobre Nós</h2>
+                <p>Bem-vindo ao Moz Diaristas Express! Nosso site é dedicado a conectar diaristas qualificados com clientes que precisam de serviços domésticos, como limpeza de casa, lavagem de roupas e cuidados com o quintal. Nosso objetivo é facilitar o acesso a serviços confiáveis e eficientes.</p>
+                <button onclick="loadContent('inicial')">Voltar</button>
+            `,
+            contato: `
+                <h2>Contato</h2>
+                <p>Se você tiver alguma dúvida ou precisar de mais informações, entre em contato conosco:</p>
+                <p>Email: contato@mozdiarestasexpress.com</p>
+                <p>WhatsApp: <a href="https://wa.me/258000000000" target="_blank">+258 000 000 000</a></p>
+                <button onclick="loadContent('inicial')">Voltar</button>
+            `
+        };
+
+        const distritosPorProvincia = {
+            maputo: ['Maputo Cidade', 'Matola', 'Boane', 'Magude', 'Moamba'],
+            sofala: ['Beira', 'Dondo', 'Chibabava', 'Machanga', 'Marromeu'],
+            nampula: ['Nampula Cidade', 'Nacala', 'Monapo', 'Muecate', 'Marrupa'],
+            zambézia: ['Quelimane', 'Gurué', 'Milange', 'Namarroi', 'Alto Molócue'],
+            tete: ['Tete Cidade', 'Mutarara', 'Zobué', 'Dôa', 'Chiuta'],
+            niassa: ['Lichinga', 'Cuamba', 'Mandimba', 'Marrupa', 'Sanga'],
+            inhambane: ['Inhambane Cidade', 'Maxixe', 'Vilankulo', 'Govuro', 'Jangamo'],
+            gaza: ['Xai-Xai', 'Chókwè', 'Bilene', 'Chibuto', 'Mabalane'],
+            manica: ['Chimoio', 'Vanduzi', 'Sussundenga', 'Gondola', 'Manica'],
+            'maputo-provincia': ['Matola', 'Boane', 'Magude', 'Moamba', 'Namaacha']
+        };
+
+        function loadContent(page) {
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = content[page];
+
+            if (page === 'registro') {
+                const tipoSelect = document.getElementById('tipo');
+                const servicosDiv = document.getElementById('servicos');
+                const provinciaSelect = document.getElementById('provincia');
+                const distritoSelect = document.getElementById('distrito');
+                const successMessage = document.getElementById('successMessage');
+
+                tipoSelect.addEventListener('change', (event) => {
+                    if (event.target.value === 'diarista') {
+                        servicosDiv.classList.remove('hidden');
+                    } else {
+                        servicosDiv.classList.add('hidden');
+                    }
+                });
+
+                provinciaSelect.addEventListener('change', (event) => {
+                    const provincia = event.target.value;
+                    const distritos = distritosPorProvincia[provincia] || [];
+                    
+                    distritoSelect.innerHTML = '<option value="">Selecione o Distrito</option>';
+                    
+                    distritos.forEach(distrito => {
+                        const option = document.createElement('option');
+                        option.value = distrito.toLowerCase().replace(/\s+/g, '-');
+                        option.textContent = distrito;
+                        distritoSelect.appendChild(option);
+                    });
+                });
+
+                document.getElementById('registroForm').addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    successMessage.classList.remove('hidden');
+                    document.getElementById('registroForm').reset();
+                });
+            }
+        }
+
+        document.getElementById('homeLink').addEventListener('click', () => loadContent('inicial'));
+        document.getElementById('termosLink').addEventListener('click', () => loadContent('termos'));
+        document.getElementById('registroLink').addEventListener('click', () => loadContent('registro'));
+        document.getElementById('sobreLink').addEventListener('click', () => loadContent('sobre'));
+        document.getElementById('contatoLink').addEventListener('click', () => loadContent('contato'));
+
+        // Load initial content
+        loadContent('inicial');
+
+        // Logo creation
+        const logoElement = document.getElementById('logo');
+        logoElement.style.background = '#004d40';
+        logoElement.style.color = '#fff';
+        logoElement.style.borderRadius = '50%';
+        logoElement.style.padding = '15px 30px';
+        logoElement.style.fontSize = '28px';
+        logoElement.style.fontWeight = 'bold';
+        logoElement.style.textTransform = 'uppercase';
+        logoElement.style.display = 'inline-block';
+    </script>
+</body>
+</html>
