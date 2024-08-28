@@ -11,13 +11,12 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            padding-top: 80px; /* Espaço para o cabeçalho fixo */
         }
 
         header {
             background-color: #004d40;
             color: #fff;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             position: fixed;
             width: 100%;
@@ -27,7 +26,7 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             gap: 10px;
         }
 
@@ -52,7 +51,7 @@
 
         header nav {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
         }
 
@@ -69,14 +68,15 @@
         }
 
         main {
-            padding: 20px;
+            padding: 80px 20px 20px; /* Espaço para o cabeçalho fixo e padding inferior */
             max-width: 800px;
             margin: auto;
+            margin-top: 100px; /* Ajuste para descer o título */
         }
 
         h2 {
             color: #004d40;
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 20px;
         }
 
@@ -160,7 +160,7 @@
 
             header nav {
                 flex-direction: column;
-                gap: 10px;
+                gap: 5px;
             }
 
             form {
@@ -172,7 +172,7 @@
             }
 
             h2 {
-                font-size: 24px;
+                font-size: 22px;
             }
         }
 
@@ -211,9 +211,9 @@
     <header>
         <h1><span id="logo">Moz Diaristas</span> Express</h1>
         <nav>
-            <a href="#" id="homeLink">Página Inicial</a>
-            <a href="#" id="termosLink">Termos e Condições</a>
-            <a href="#" id="registroLink">Se Cadastrar</a>
+            <a href="#" id="homeLink">Início</a>
+            <a href="#" id="termosLink">Termos</a>
+            <a href="#" id="registroLink">Registro</a>
             <a href="#" id="sobreLink">Sobre</a>
             <a href="#" id="contatoLink">Contato</a>
         </nav>
@@ -286,14 +286,15 @@
                         <label for="cuidar-casa">Cuidar da Casa</label><br>
 
                         <input type="checkbox" id="limpar" name="servicos" value="limpar">
-                        <label for="limpar">Limpar</label>
+                        <label for="limpar">Limpar</label><br>
                     </div>
 
-                    <button type="submit">Enviar</button>
+                    <button type="submit">Registrar</button>
+                    <div id="successMessage" class="hidden message">
+                        <p>Parabéns! Seu registro foi realizado com sucesso.</p>
+                        <p>Para mais informações sobre taxas e valores, entre em contato pelo <a href="https://wa.me/258000000000" target="_blank">WhatsApp</a>.</p>
+                    </div>
                 </form>
-                <div id="successMessage" class="hidden message">
-                    <p>Registro concluído com sucesso! Entre em contato conosco pelo <a href="https://wa.me/258000000000" target="_blank">WhatsApp</a> para obter informações sobre taxas e valores dos serviços.</p>
-                </div>
                 <button onclick="loadContent('inicial')">Voltar</button>
             `,
             sobre: `
