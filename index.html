@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
+            padding-top: 80px; /* Espaço para o cabeçalho fixo */
         }
 
         header {
@@ -23,14 +24,24 @@
             top: 0;
             left: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        header.shrink {
+            padding: 10px;
+            font-size: 14px;
         }
 
         header h1 {
             margin: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 10px;
+            font-size: 24px;
         }
 
         header h1 span {
@@ -55,7 +66,7 @@
         }
 
         main {
-            padding: 80px 20px 60px;
+            padding: 20px;
             max-width: 800px;
             margin: auto;
         }
@@ -261,10 +272,11 @@
                     <p>Para obter informações sobre taxas e valores dos serviços, entre em contato conosco via WhatsApp:</p>
                     <p><a href="https://wa.me/258000000000" target="_blank">+258 000 000 000</a></p>
                 </div>
+                <button onclick="loadContent('inicial')">Voltar</button>
             `,
             sobre: `
                 <h2>Sobre Nós</h2>
-                <p>Bem-vindo ao Moz Diaristas Express! Nosso site é dedicado a conectar diaristas qualificados com clientes que precisam de serviços domésticos, como limpeza de casa, lavagem de roupas e cuidados com o quintal. Nosso objetivo é facilitar o acesso a serviços confiáveis e eficientes.</p>
+                <p>O Moz Diaristas Express é uma plataforma que visa facilitar a conexão entre diaristas e clientes em Moçambique. Nosso objetivo é oferecer uma maneira eficiente e prática de encontrar serviços domésticos de qualidade.</p>
                 <button onclick="loadContent('inicial')">Voltar</button>
             `,
             contato: `
@@ -337,6 +349,16 @@
 
         // Load initial content
         loadContent('inicial');
+
+        // Header resize on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shrink');
+            } else {
+                header.classList.remove('shrink');
+            }
+        });
 
         // Logo creation
         const logoElement = document.getElementById('logo');
