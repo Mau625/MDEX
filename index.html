@@ -27,7 +27,7 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 10px;
         }
 
@@ -38,31 +38,34 @@
 
         header h1 {
             margin: 0;
+            font-size: 24px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 24px;
         }
 
         header h1 span {
             display: inline-block;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
         }
 
-        nav {
-            margin-top: 10px;
+        header nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
         }
 
-        nav a {
+        header nav a {
             color: #fff;
-            margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+            padding: 5px;
+            transition: color 0.3s;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        header nav a:hover {
+            color: #c1d3d6;
         }
 
         main {
@@ -73,6 +76,8 @@
 
         h2 {
             color: #004d40;
+            font-size: 28px;
+            margin-bottom: 20px;
         }
 
         form {
@@ -88,6 +93,7 @@
         label {
             display: block;
             margin: 10px 0 5px;
+            font-size: 16px;
         }
 
         input, select, button {
@@ -152,9 +158,9 @@
                 font-size: 20px;
             }
 
-            nav a {
-                font-size: 14px;
-                margin: 0 10px;
+            header nav {
+                flex-direction: column;
+                gap: 10px;
             }
 
             form {
@@ -164,6 +170,10 @@
             button {
                 font-size: 14px;
             }
+
+            h2 {
+                font-size: 24px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -171,13 +181,28 @@
                 font-size: 18px;
             }
 
-            nav {
+            header nav {
+                font-size: 14px;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            header nav a {
+                display: block;
+                padding: 10px;
                 font-size: 14px;
             }
 
-            nav a {
-                display: block;
-                margin: 5px 0;
+            form {
+                padding: 10px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+
+            h2 {
+                font-size: 20px;
             }
         }
     </style>
@@ -264,13 +289,10 @@
                         <label for="limpar">Limpar</label>
                     </div>
 
-                    <button type="submit">Registrar</button>
+                    <button type="submit">Enviar</button>
                 </form>
                 <div id="successMessage" class="hidden message">
-                    <h3>Parabéns!</h3>
-                    <p>Seu registro foi realizado com sucesso.</p>
-                    <p>Para obter informações sobre taxas e valores dos serviços, entre em contato conosco via WhatsApp:</p>
-                    <p><a href="https://wa.me/258000000000" target="_blank">+258 000 000 000</a></p>
+                    <p>Registro concluído com sucesso! Entre em contato conosco pelo <a href="https://wa.me/258000000000" target="_blank">WhatsApp</a> para obter informações sobre taxas e valores dos serviços.</p>
                 </div>
                 <button onclick="loadContent('inicial')">Voltar</button>
             `,
