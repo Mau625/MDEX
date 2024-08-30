@@ -1,398 +1,123 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moz Diaristas Express</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background-color: #004d40;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        header.shrink {
-            padding: 10px;
-            font-size: 14px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        header h1 span {
-            display: inline-block;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        header nav {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        header nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #c1d3d6;
-        }
-
-        main {
-            padding: 80px 20px 20px; /* Espaço para o cabeçalho fixo e padding inferior */
-            max-width: 800px;
-            margin: auto;
-            margin-top: 100px; /* Ajuste para descer o título */
-        }
-
-        h2 {
-            color: #004d40;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            max-width: 100%;
-            box-sizing: border-box;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-size: 16px;
-        }
-
-        input, select, button {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #004d40;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        button:hover {
-            background-color: #00332e;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .message {
-            background-color: #e8f5e9;
-            color: #004d40;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .message a {
-            color: #004d40;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .message a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background-color: #004d40;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 20px;
-            }
-
-            header nav {
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            form {
-                padding: 15px;
-            }
-
-            button {
-                font-size: 14px;
-            }
-
-            h2 {
-                font-size: 22px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 18px;
-            }
-
-            header nav {
-                font-size: 14px;
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            header nav a {
-                display: block;
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            form {
-                padding: 10px;
-            }
-
-            button {
-                font-size: 14px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>Registro de Diaristas</title>
 </head>
 <body>
     <header>
-        <h1><span id="logo">Moz Diaristas</span> Express</h1>
-        <nav>
-            <a href="#" id="homeLink">Início</a>
-            <a href="#" id="termosLink">Termos</a>
-            <a href="#" id="registroLink">Registro</a>
-            <a href="#" id="sobreLink">Sobre</a>
-            <a href="#" id="contatoLink">Contato</a>
-        </nav>
+        <div class="container">
+            <h1>Encontre uma Diarista</h1>
+            <nav>
+                <ul>
+                    <li><a href="#register">Registrar</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main id="mainContent">
-        <!-- O conteúdo será inserido aqui dinamicamente -->
-    </main>
-    <footer>
-        <p>&copy; 2024 Moz Diaristas Express</p>
-    </footer>
-    <script>
-        const content = {
-            inicial: `
-                <h2>Bem-vindo ao Moz Diaristas Express</h2>
-                <p>Conectamos diaristas qualificados com clientes que precisam de serviços domésticos como limpeza, lavagem de roupas e cuidados com o quintal.</p>
-            `,
-            termos: `
-                <h2>Termos e Condições</h2>
-                <p>Aqui você pode inserir os termos e condições do seu serviço. Inclua informações sobre política de privacidade, uso dos dados, e outras informações legais relevantes.</p>
-                <button onclick="loadContent('inicial')">Voltar</button>
-            `,
-            registro: `
-                <h2>Registro</h2>
-                <form id="registroForm">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
 
-                    <label for="celular">Celular:</label>
-                    <input type="tel" id="celular" name="celular" required>
+    <main>
+        <section id="register">
+            <h2>Registrar</h2>
+            <form id="registrationForm">
+                <label>Você está se registrando como:</label>
+                <div id="userType">
+                    <label><input type="radio" name="userType" value="diarista" checked> Diarista</label>
+                    <label><input type="radio" name="userType" value="cliente"> Cliente</label>
+                </div>
 
-                    <label for="tipo">Tipo de Usuário:</label>
-                    <select id="tipo" name="tipo" required>
-                        <option value="cliente">Cliente</option>
-                        <option value="diarista">Diarista</option>
-                    </select>
+                <div id="diaristaFields">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" required>
 
-                    <label for="provincia">Província:</label>
-                    <select id="provincia" name="provincia" required>
+                    <label for="experience">Experiência (anos):</label>
+                    <input type="number" id="experience" required>
+
+                    <label>Serviços Oferecidos:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="services" value="Limpeza geral da casa"> Limpeza geral da casa</label>
+                        <label><input type="checkbox" name="services" value="Limpeza de piso"> Limpeza de piso</label>
+                        <label><input type="checkbox" name="services" value="Limpeza de móveis"> Limpeza de móveis</label>
+                        <label><input type="checkbox" name="services" value="Limpeza de eletrodomésticos"> Limpeza de eletrodomésticos</label>
+                        <label><input type="checkbox" name="services" value="Limpeza de banheiro"> Limpeza de banheiro</label>
+                        <label><input type="checkbox" name="services" value="Organização de armários"> Organização de armários</label>
+                        <label><input type="checkbox" name="services" value="Arrumação de camas"> Arrumação de camas</label>
+                        <label><input type="checkbox" name="services" value="Lavagem e passagem de roupas"> Lavagem e passagem de roupas</label>
+                        <label><input type="checkbox" name="services" value="Limpeza de janelas"> Limpeza de janelas</label>
+                        <label><input type="checkbox" name="services" value="Limpeza de áreas externas"> Limpeza de áreas externas</label>
+                        <label><input type="checkbox" name="services" value="Limpeza pós-obra"> Limpeza pós-obra</label>
+                        <label><input type="checkbox" name="services" value="Faxina pesada"> Faxina pesada</label>
+                        <label><input type="checkbox" name="services" value="Organização geral da casa"> Organização geral da casa</label>
+                        <label><input type="checkbox" name="services" value="Pequenos reparos domésticos"> Pequenos reparos domésticos</label>
+                        <label><input type="checkbox" name="services" value="Cuidados com animais de estimação"> Cuidados com animais de estimação</label>
+                        <label><input type="checkbox" name="services" value="Serviços extras"> Serviços extras</label>
+                    </div>
+
+                    <label for="province">Província:</label>
+                    <select id="province" required>
                         <option value="">Selecione a Província</option>
-                        <option value="maputo">Maputo</option>
-                        <option value="sofala">Sofala</option>
-                        <option value="nampula">Nampula</option>
-                        <option value="zambezia">Zambézia</option>
-                        <option value="tete">Tete</option>
-                        <option value="niassa">Niassa</option>
-                        <option value="inhambane">Inhambane</option>
-                        <option value="gaza">Gaza</option>
-                        <option value="manica">Manica</option>
-                        <option value="maputo-provincia">Maputo Província</option>
+                        <option value="Maputo">Maputo</option>
+                        <option value="Gaza">Gaza</option>
+                        <option value="Inhambane">Inhambane</option>
+                        <option value="Sofala">Sofala</option>
+                        <option value="Manica">Manica</option>
+                        <option value="Tete">Tete</option>
+                        <option value="Zambézia">Zambézia</option>
+                        <option value="Nampula">Nampula</option>
+                        <option value="Niassa">Niassa</option>
+                        <option value="Cabo Delgado">Cabo Delgado</option>
                     </select>
 
-                    <label for="distrito">Distrito:</label>
-                    <select id="distrito" name="distrito" required>
+                    <label for="district">Distrito:</label>
+                    <select id="district" required>
                         <option value="">Selecione o Distrito</option>
-                        <!-- Distritos serão carregados dinamicamente -->
+                        <option value="Maputo">Maputo</option>
+                        <option value="Matola">Matola</option>
+                        <option value="Marracuene">Marracuene</option>
+                        <option value="Xai-Xai">Xai-Xai</option>
+                        <option value="Chibuto">Chibuto</option>
+                        <option value="Bilene">Bilene</option>
                     </select>
 
                     <label for="bairro">Bairro:</label>
-                    <input type="text" id="bairro" name="bairro" required>
+                    <input type="text" id="bairro" required>
 
-                    <div id="servicos" class="hidden">
-                        <label>Serviços que o diarista irá prestar:</label>
-                        <input type="checkbox" id="lavar-roupa" name="servicos" value="lavar-roupa">
-                        <label for="lavar-roupa">Lavar Roupa</label><br>
+                    <label for="rua">Rua:</label>
+                    <input type="text" id="rua" required>
 
-                        <input type="checkbox" id="cozinhar" name="servicos" value="cozinhar">
-                        <label for="cozinhar">Cozinhar</label><br>
+                    <label for="contact">Contatos:</label>
+                    <input type="text" id="contact" required>
+                </div>
 
-                        <input type="checkbox" id="cuidar-casa" name="servicos" value="cuidar-casa">
-                        <label for="cuidar-casa">Cuidar da Casa</label><br>
+                <div id="clienteFields" style="display: none;">
+                    <label for="clientName">Nome:</label>
+                    <input type="text" id="clientName" required>
 
-                        <input type="checkbox" id="limpar" name="servicos" value="limpar">
-                        <label for="limpar">Limpar</label><br>
-                    </div>
+                    <label for="clientEmail">E-mail:</label>
+                    <input type="email" id="clientEmail" required>
 
-                    <button type="submit">Registrar</button>
-                    <div id="successMessage" class="hidden message">
-                        <p>Parabéns! Seu registro foi realizado com sucesso.</p>
-                        <p>Para mais informações sobre taxas e valores, entre em contato pelo <a href="https://wa.me/258000000000" target="_blank">WhatsApp</a>.</p>
-                    </div>
-                </form>
-                <button onclick="loadContent('inicial')">Voltar</button>
-            `,
-            sobre: `
-                <h2>Sobre Nós</h2>
-                <p>O Moz Diaristas Express é uma plataforma que visa facilitar a conexão entre diaristas e clientes em Moçambique. Nosso objetivo é oferecer uma maneira eficiente e prática de encontrar serviços domésticos de qualidade.</p>
-                <button onclick="loadContent('inicial')">Voltar</button>
-            `,
-            contato: `
-                <h2>Contato</h2>
-                <p>Para mais informações, entre em contato conosco:</p>
-                <p><a href="https://wa.me/258000000000" target="_blank">+258 000 000 000</a></p>
-                <button onclick="loadContent('inicial')">Voltar</button>
-            `
-        };
+                    <label for="clientPhone">Telefone:</label>
+                    <input type="tel" id="clientPhone" required>
+                </div>
 
-        const distritosPorProvincia = {
-            maputo: ['Maputo Cidade', 'Matola', 'Boane', 'Magude', 'Moamba', 'Namaacha'],
-            sofala: ['Beira', 'Dondo', 'Chibabava', 'Mutarara', 'Caia'],
-            nampula: ['Nampula Cidade', 'Monapo', 'Marrupa', 'Nacala', 'Larde'],
-            zambézia: ['Quelimane', 'Nicoadala', 'Namacurra', 'Gorongosa', 'Alto Molócue'],
-            tete: ['Tete Cidade', 'Mutarara', 'Zobué', 'Dôa', 'Chiuta'],
-            niassa: ['Lichinga', 'Cuamba', 'Mandimba', 'Marrupa', 'Sanga'],
-            inhambane: ['Inhambane Cidade', 'Maxixe', 'Vilankulo', 'Govuro', 'Jangamo'],
-            gaza: ['Xai-Xai', 'Chókwè', 'Bilene', 'Chibuto', 'Mabalane'],
-            manica: ['Chimoio', 'Vanduzi', 'Sussundenga', 'Gondola', 'Manica'],
-            'maputo-provincia': ['Matola', 'Boane', 'Magude', 'Moamba', 'Namaacha']
-        };
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
 
-        function loadContent(page) {
-            const mainContent = document.getElementById('mainContent');
-            mainContent.innerHTML = content[page];
+        <section id="about">
+            <h2>Sobre Nós</h2>
+            <p>Conectamos diaristas profissionais com pessoas que precisam de serviços de limpeza. Nossa missão é garantir serviços de qualidade e segurança.</p>
+            <p>Para mais informações, entre em contato pelo WhatsApp: <a href="https://wa.me/123456789" target="_blank">123456789</a></p>
+        </section>
+    </main>
 
-            if (page === 'registro') {
-                const tipoSelect = document.getElementById('tipo');
-                const servicosDiv = document.getElementById('servicos');
-                const provinciaSelect = document.getElementById('provincia');
-                const distritoSelect = document.getElementById('distrito');
-                const successMessage = document.getElementById('successMessage');
+    <footer>
+        <p>&copy; 2024 Registro de Diaristas. Todos os direitos reservados.</p>
+    </footer>
 
-                tipoSelect.addEventListener('change', (event) => {
-                    if (event.target.value === 'diarista') {
-                        servicosDiv.classList.remove('hidden');
-                    } else {
-                        servicosDiv.classList.add('hidden');
-                    }
-                });
-
-                provinciaSelect.addEventListener('change', (event) => {
-                    const provincia = event.target.value;
-                    const distritos = distritosPorProvincia[provincia] || [];
-                    
-                    distritoSelect.innerHTML = '<option value="">Selecione o Distrito</option>';
-                    
-                    distritos.forEach(distrito => {
-                        const option = document.createElement('option');
-                        option.value = distrito.toLowerCase().replace(/\s+/g, '-');
-                        option.textContent = distrito;
-                        distritoSelect.appendChild(option);
-                    });
-                });
-
-                document.getElementById('registroForm').addEventListener('submit', (event) => {
-                    event.preventDefault();
-                    successMessage.classList.remove('hidden');
-                    document.getElementById('registroForm').reset();
-                });
-            }
-        }
-
-        document.getElementById('homeLink').addEventListener('click', () => loadContent('inicial'));
-        document.getElementById('termosLink').addEventListener('click', () => loadContent('termos'));
-        document.getElementById('registroLink').addEventListener('click', () => loadContent('registro'));
-        document.getElementById('sobreLink').addEventListener('click', () => loadContent('sobre'));
-        document.getElementById('contatoLink').addEventListener('click', () => loadContent('contato'));
-
-        // Load initial content
-        loadContent('inicial');
-
-        // Header resize on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('shrink');
-            } else {
-                header.classList.remove('shrink');
-            }
-        });
-
-        // Logo creation
-        const logoElement = document.getElementById('logo');
-        logoElement.style.background = '#004d40';
-        logoElement.style.color = '#fff';
-        logoElement.style.borderRadius = '50%';
-        logoElement.style.padding = '15px 30px';
-        logoElement.style.fontSize = '28px';
-        logoElement.style.fontWeight = 'bold';
-        logoElement.style.textTransform = 'uppercase';
-        logoElement.style.display = 'inline-block';
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
